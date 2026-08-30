@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+
+    #message {
+      position: fixed;
+      top: 15px;
+      width: 100%;
+      z-index: 9999;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      text-shadow: 0 2px 5px black;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="message">
+  HALLOWEEN AR TEST
+</div>
+
+<a-scene
+  mindar-face
+  embedded
+  vr-mode-ui="enabled: false"
+  device-orientation-permission-ui="enabled: false">
+
+  <a-camera
+    active="false"
+    position="0 0 0">
+  </a-camera>
+
+  <a-entity mindar-face-target="anchorIndex: 10">
+
+    <a-sphere
+      position="-0.22 0.20 0"
+      radius="0.12"
+      color="#8b0000">
+    </a-sphere>
+
+    <a-sphere
+      position="0.22 0.20 0"
+      radius="0.12"
+      color="#8b0000">
+    </a-sphere>
+
+  </a-entity>
+
+</a-scene>
+
+</body>
+</html>
