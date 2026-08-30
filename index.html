@@ -3,60 +3,56 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: black;
-    }
-
-    #message {
-      position: fixed;
-      top: 15px;
-      width: 100%;
-      z-index: 9999;
-      text-align: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      text-shadow: 0 2px 5px black;
-    }
-  </style>
 </head>
 
 <body>
 
-<div id="message">
-  HALLOWEEN AR TEST
-</div>
-
 <a-scene
   mindar-face
   embedded
+  color-space="sRGB"
+  renderer="colorManagement: true; physicallyCorrectLights: true"
   vr-mode-ui="enabled: false"
   device-orientation-permission-ui="enabled: false">
+
+  <a-assets>
+    <a-asset-item
+      id="headModel"
+      src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/sparkar/headOccluder.glb">
+    </a-asset-item>
+
+    <a-asset-item
+      id="glassesModel"
+      src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf">
+    </a-asset-item>
+  </a-assets>
 
   <a-camera
     active="false"
     position="0 0 0">
   </a-camera>
 
-  <a-entity mindar-face-target="anchorIndex: 10">
+  <a-entity mindar-face-target="anchorIndex: 168">
 
-    <a-sphere
-      position="-0.22 0.20 0"
-      radius="0.12"
-      color="#8b0000">
-    </a-sphere>
+    <a-gltf-model
+      src="#headModel"
+      position="0 -0.3 0.15"
+      scale="0.065 0.065 0.065"
+      visible="false">
+    </a-gltf-model>
 
-    <a-sphere
-      position="0.22 0.20 0"
-      radius="0.12"
-      color="#8b0000">
-    </a-sphere>
+  </a-entity>
+
+  <a-entity mindar-face-target="anchorIndex: 168">
+
+    <a-gltf-model
+      src="#glassesModel"
+      rotation="0 -90 0"
+      position="0 -0.3 0"
+      scale="0.6 0.6 0.6">
+    </a-gltf-model>
 
   </a-entity>
 
